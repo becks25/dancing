@@ -1,12 +1,9 @@
-app.controller('DragAndDropCtrl', function ($scope) {
+app.controller('DragAndDropCtrl', function ($scope, DraggedFactory) {
   //  var dragImage = document.createElement('img');
   // dragImage.src = 'http://simpleicon.com/wp-content/uploads/Shopping-Cart-12-128x128.png';
-    var dragged = null;
     $scope.handleDragStart = function (e) {
-        dragged=this;
+        DraggedFactory.dragged=this;
         this.style.opacity = '0.4';
-        // angular.element(e.dataTransfer.setData('text/html', this.attributes['data-index'].value));
-        // e.dataTransfer.setDragImage(dragImage, 0, 0);
     };
     $scope.handleDragEnd = function (e) {
         this.style.opacity = '1.0';
@@ -15,14 +12,11 @@ app.controller('DragAndDropCtrl', function ($scope) {
         e.preventDefault();
         e.stopPropagation();
         var product = e.dataTransfer.getData('text/html').split(">")[1];
-        // $scope.$apply(function () {
-        //     CartFactory.addToCart($scope.products[product]);
-        // });
-        console.log(e);
-        console.log(dragged);
-        angular.element(dragged).css('left', e.clientX+'px');
 
-        // console.log(angular.element(dragged).css('left', '10px'));
+
+        angular.element(DraggedFactory.dragged).css('left', e.clientX+'px');
+        angular.element(DraggedFactory.dragged).css('top', e.layerY+'px');
+
         this.style.transform = 'scale(1.0)';
     };
     $scope.handleDragOver = function (e) {
