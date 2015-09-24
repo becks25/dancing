@@ -1,3 +1,13 @@
 <div class="col-sm-12 center-block text-center">
-	<webcam channel="partyCam"></webcam>
+	<webcam channel="partyCam"
+		 on-stream="onStream(stream)"
+		 on-streaming="onSuccess()"
+		 on-error="onError(err)"
+	></webcam>
+
+	      <canvas id="snapshot" width="160" height="96"></canvas>
+
+	      <button type="button"  class="btn btn-default" ng-click="makeSnapshot()">Click</button>
+
+	      <canvas id="live" width="160" height="96"></canvas>
 </div>
