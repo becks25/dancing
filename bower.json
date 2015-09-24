@@ -1,0 +1,19 @@
+{
+  "name": "dancing",
+  "version": "0.0.0",
+  "homepage": "https://github.com/becks25/dancing",
+  "authors": [
+    "Beckylee <Beckylee.Dell@tufts.edu>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcam": "webcam-directive#~3.0.0"
+  }
+}
