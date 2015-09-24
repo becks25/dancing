@@ -13,6 +13,11 @@ app.controller('joinPartyCtrl', function ($scope) {
     $scope.mono = false;
     $scope.invert = false;
 
+    var start;
+
+
+    console.log('hi');
+
     $scope.patOpts = {x: 0, y: 0, w: 25, h: 25};
 
     // Setup a channel to receive a video property
@@ -50,33 +55,50 @@ app.controller('joinPartyCtrl', function ($scope) {
     };
 
 
-    var removeBackground = function(backgroundImage){
+    var removeBackground = function(timestamp){
+            //   var timestamp = Date.now();
+            // console.log(timestamp);
+             var progress = timestamp - start;
+
             var liveCanvas = document.querySelector('#live');
             if (!liveCanvas) return;
 
             liveCanvas.width = _video.width;
             liveCanvas.height = _video.height;
             var ctxLive = liveCanvas.getContext('2d');
-
-            var idata = getVideoData($scope.patOpts.x, $scope.patOpts.y, $scope.patOpts.w, $scope.patOpts.h);
-            ctxLive.putImageData(idata, 0, 0);
+            var background_data = $scope.backgroundIdata;
 
 
-              // ctxLive.drawImage(_video, 0, 0, _video.width, _video.height);
-              // // var background_data = $scope.background.getImageData(0, 0, ctxLive.width, ctxLive.height);
-              // var background_data = backgroundImage;
-              // var frame = ctxLive.getImageData(0, 0, ctxLive.width, ctxLive.height);
-              // var l = frame.data.length / 4;
-              // console.log(frame);
+              var idata = getVideoData($scope.patOpts.x, $scope.patOpts.y, $scope.patOpts.w, $scope.patOpts.h);
+              ctxLive.putImageData(idata, 0, 0);
 
-              // for (var i = 0; i < l; i++) {
-              //   var r = frame.data[i * 4 + 0];
-              //   var g = frame.data[i * 4 + 1];
-              //   var b = frame.data[i * 4 + 2];
-              //   if (g > background_data.data[i*4+0] && r > background_data.data[i*4+1] && b < background_data.data[i*4+2])
-              //     frame.data[i * 4 + 3] = 0;
-              // }
-              //ctxLive.putImageData(frame, 0, 0);
+              console.log('data', idata);
+              console.log('background', $scope.backgroundIdata);
+
+
+                // ctxLive.drawImage(_video, 0, 0, _video.width, _video.height);
+                // // var background_data = $scope.background.getImageData(0, 0, ctxLive.width, ctxLive.height);
+                // var frame = ctxLive.getImageData(0, 0, ctxLive.width, ctxLive.height);
+                var l = idata.data.length / 4;
+
+                for (var i = 0; i < l; i++) {
+                  var r = idata.data[i * 4 + 0];
+                  var g = idata.data[i * 4 + 1];
+                  var b = idata.data[i * 4 + 2];
+                  if ((g < background_data.data[i*4+0] +30 && g > background_data.data[i*4+0] -30) && (r < background_data.data[i*4+1] + 30 && r > background_data.data[i*4+1] - 30) && (b < background_data.data[i*4+2] + 30 && b > background_data.data[i*4+2] - 30)){
+                      idata.data[i * 4 + 3] = 0;
+                    }
+                }
+
+                console.log('after', idata);
+                ctxLive.putImageData(idata, 0, 0);
+              
+
+              if (progress < 20000) {
+                requestAnimationFrame(removeBackground);
+              }
+
+
     };
     
 
@@ -95,12 +117,15 @@ app.controller('joinPartyCtrl', function ($scope) {
 
             var idata = getVideoData($scope.patOpts.x, $scope.patOpts.y, $scope.patOpts.w, $scope.patOpts.h);
             ctxPat.putImageData(idata, 0, 0);
+            $scope.backgroundIdata = idata;
 
             sendSnapshotToServer(patCanvas.toDataURL());
 
             patData = idata;
 
-            setTimeout(removeBackground(idata), 3000);
+            start = Date.now()
+            
+            requestAnimationFrame(removeBackground);
         }
     };
 
@@ -125,13 +150,12 @@ app.controller('joinPartyCtrl', function ($scope) {
     };
 
 
-    // (function() {
-    //   var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-    //                               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    //   window.requestAnimationFrame = requestAnimationFrame;
-    // })();
+    (function() {
+      var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                                  window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+      window.requestAnimationFrame = requestAnimationFrame;
+    })();
 
-    var start = Date.now();
 
     /**
      * Apply a simple edge detection filter.
