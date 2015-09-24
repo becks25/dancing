@@ -22,14 +22,12 @@ app.controller('DragAndDropCtrl', function ($scope, DraggedFactory) {
     $scope.handleDragOver = function (e) {
         e.preventDefault(); // Necessary. Allows us to drop.
         e.dataTransfer.dropEffect = 'move'; // See the section on the DataTransfer object.
-        this.style.transform = 'scale(1.5)';
-      this.style.transition = 'all .5s ease-in-out';
+
         return false;
     };
     $scope.handleDragLeave = function (e) {
         e.preventDefault();
         e.dataTransfer.dropEffect = 'move'; // See the section on the DataTransfer object.
-        this.style.transform = 'scale(1.0)';
-        this.style.transition = '';
+
     };
 });
