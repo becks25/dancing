@@ -3,15 +3,31 @@
         <div class="navbar-header">
             <fullstack-logo></fullstack-logo>
         </div>
-        <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+       <!--  <ul class="nav navbar-nav">
+            <li ng-repeat="item in items">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
-        </ul>
-        <button ng-show="!user" ui-sref="login" class="btn login-button">Login</button>
-        <div ng-show="user" class="welcome">
-            <span>Welcome, {{ user.email }}!</span>
-            <a ng-click="logout()">Logout</a>
+        </ul> -->
+        <div class="col-sm-12 col-md-4">
+
+            <select ng-model="dancesong" class="form-control">
+                <option value="" disabled selected>Select a Song</option>
+                <option ng-repeat="song in songs" value="{{song.url}}">{{song.label}}</option>
+            </select>
+
         </div>
+
+         <div class="col-sm-12 col-md-4" dropdown is-open="status.isopen">
+              <button id="single-button" type="button" class="btn btn-default btn-block" dropdown-toggle ng-disabled="disabled">
+                Add Dancers <span class="caret"></span>
+              </button>
+
+              <div class="dropdown-menu" role="menu" aria-labelledby="single-button">
+                <dancer-nav></dancer-nav>
+              </div>
+        </div>
+
+        <audio ng-hide="true" ng-src="{{dancesong}}" autoplay controls></audio>
+        
     </div>
 </nav>

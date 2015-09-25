@@ -3,7 +3,9 @@
 }
 
 body {
-  background: #fdfdfd;
+
+  background-image: url('/js/Backgrounds/party-background.jpg');
+  background-size: cover;
 }
 
 @mixin clearfix {
@@ -15,9 +17,9 @@ body {
 }
 
 #main {
-  padding-top: 60px;
   width: 100%;
   margin: 0 auto;
+
 }
 
 .dancer{

@@ -12,10 +12,23 @@ app.controller('DragAndDropCtrl', function ($scope, DraggedFactory) {
         e.preventDefault();
         e.stopPropagation();
         var product = e.dataTransfer.getData('text/html').split(">")[1];
+        var draggedElem = angular.element(DraggedFactory.dragged);
+        console.log(e);
+     //   console.log(angular.element(document.querySelector()));
+        var left = e.pageX/2;
+        var top = e.pageY/2;
 
+      //  $scope.iframeHeight = document.querySelector(document);
+        console.log(angular.element(window).prop('outerHeight'));
 
-        angular.element(DraggedFactory.dragged).css('left', e.clientX+'px');
-        angular.element(DraggedFactory.dragged).css('top', e.layerY+'px');
+        console.log(draggedElem);
+        console.log('want', e.pageY);
+        draggedElem.css('left', left + 'px');
+        draggedElem.css('top', top + 'px');
+
+        // angular.element(DraggedFactory.dragged).css('left', e.x+'px');
+        // angular.element(DraggedFactory.dragged).css('top', e.y+'px');
+        console.log(DraggedFactory.dragged);
 
         this.style.transform = 'scale(1.0)';
     };
