@@ -1,5 +1,4 @@
-app.controller('partyCtrl', function ($scope, dancers) {
+app.controller('partyCtrl', function ($scope) {
 
-  $scope.dancers = dancers;
   $scope.windowHeight = angular.element(window).prop('outerHeight') + 'px';
 });
