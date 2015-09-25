@@ -1,9 +1,10 @@
-app.directive('webcamDancing', function () {
+app.directive('webcamDancing', function (Socket) {
   return {
     restrict: 'E',
     templateUrl: '/js/joinParty/joinParty.html',
     controller: 'dancerCtrl',
     link: function(scope){
+        var socket = Socket;
          var _video,
                 patData;
 
@@ -73,10 +74,7 @@ app.directive('webcamDancing', function () {
                       var idata = getVideoData(scope.patOpts.x, scope.patOpts.y, scope.patOpts.w, scope.patOpts.h);
                       ctxLive.putImageData(idata, 0, 0);
 
-                      console.log('data', idata);
-                      console.log('background', scope.backgroundIdata);
-
-
+            
                         // ctxLive.drawImage(_video, 0, 0, _video.width, _video.height);
                         // // var background_data = scope.background.getImageData(0, 0, ctxLive.width, ctxLive.height);
                         // var frame = ctxLive.getImageData(0, 0, ctxLive.width, ctxLive.height);
@@ -91,8 +89,8 @@ app.directive('webcamDancing', function () {
                             }
                         }
 
-                        console.log('after', idata);
                         ctxLive.putImageData(idata, 0, 0);
+                        socket.emit('dancingVideo', idata);
                       
 
                       if (progress < 20000) {
