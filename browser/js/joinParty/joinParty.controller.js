@@ -5,8 +5,8 @@ app.controller('joinPartyCtrl', function ($scope) {
   //   video:null
   // };
 
-  var _video = null,
-        patData = null;
+  var _video,
+        patData;
 
     $scope.showDemos = false;
     $scope.edgeDetection = false;
@@ -15,8 +15,7 @@ app.controller('joinPartyCtrl', function ($scope) {
 
     var start;
 
-
-    console.log('hi');
+    console.log('better?');
 
     $scope.patOpts = {x: 0, y: 0, w: 25, h: 25};
 
@@ -36,6 +35,7 @@ app.controller('joinPartyCtrl', function ($scope) {
 
     $scope.onSuccess = function () {
         // The video element contains the captured camera data
+        if($scope.partyCam.video) return;
         _video = $scope.partyCam.video;
 
         console.log($scope.partyCam.video);

@@ -1,11 +1,11 @@
-	<webcam channel="partyCam"
-		 on-stream="onStream(stream)"
-		 on-streaming="onSuccess()"
-		 on-error="onError(err)"
-	ng-hide="true"></webcam>
+<webcam channel="partyCam"
+	 on-stream="onStream(stream)"
+	 on-streaming="onSuccess()"
+	 on-error="onError(err)"
+ng-hide="true"></webcam>
 
-	      <canvas id="snapshot" width="160" height="96" ng-hide="true"></canvas>
+  <canvas id="snapshot" width="160" height="96" ng-hide="true"></canvas>
 
-	      <button type="button"  class="btn btn-default" ng-click="makeSnapshot()">Click</button>
+  <button type="button"  class="btn btn-default" ng-click="makeSnapshot()">Click</button>
 
-	      <canvas id="live" width="150" height="200" draggable></canvas>
+  <canvas id="live" width="150" height="200" draggable></canvas>

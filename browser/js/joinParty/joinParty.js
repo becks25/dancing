@@ -14,8 +14,9 @@ app.directive('webcamDancing', function () {
     templateUrl: '/js/joinParty/joinParty.html',
     controller: 'dancerCtrl',
     link: function(scope){
-         var _video = null,
-                patData = null;
+         var _video,
+                patData;
+
 
             scope.showDemos = false;
             scope.edgeDetection = false;
@@ -25,7 +26,7 @@ app.directive('webcamDancing', function () {
             var start;
 
 
-            console.log('hi');
+            console.log('hi ', _video);
 
             scope.patOpts = {x: 0, y: 0, w: 25, h: 25};
 
@@ -33,6 +34,7 @@ app.directive('webcamDancing', function () {
             // with a reference to the video element
             // See the HTML binding in main.html
             scope.partyCam = {};
+            
 
             scope.webcamError = false;
             scope.onError = function (err) {
