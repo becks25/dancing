@@ -9,6 +9,7 @@ app.directive('dancer', function ($compile) {
       elem.on('click dragend', function(){
         var newDancer = angular.copy(elem.children());
         newDancer.attr('draggable', '');
+        newDancer.attr('resizable', '');
         $compile(angular.element(document.querySelector('.party')).append(newDancer))(scope);
       });
     }

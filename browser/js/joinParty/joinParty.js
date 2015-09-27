@@ -1,13 +1,11 @@
-app.directive('webcamDancing', function (Socket) {
+app.directive('webcamDancing', function () {
   return {
     restrict: 'E',
     templateUrl: '/js/joinParty/joinParty.html',
     controller: 'dancerCtrl',
     link: function(scope){
-        var socket = Socket;
          var _video,
                 patData;
-
 
             scope.showDemos = false;
             scope.edgeDetection = false;
@@ -16,6 +14,21 @@ app.directive('webcamDancing', function (Socket) {
 
             var start;
 
+            var face = new tracking.ObjectTracker(['face']);
+
+
+            var liveCanvas = document.querySelector('#live');
+            face.on('track', function(event) {
+              if (event.data.length === 0) {
+                console.log('here?');
+                // No objects were detected in this frame.
+              } else {
+                event.data.forEach(function(rect) {
+                  console.log(rect);
+                  // rect.x, rect.y, rect.height, rect.width
+                });
+              }
+            });
 
             console.log('hi ', _video);
 
@@ -62,7 +75,7 @@ app.directive('webcamDancing', function (Socket) {
                     // console.log(timestamp);
                      var progress = timestamp - start;
 
-                    var liveCanvas = document.querySelector('#live');
+                    // var liveCanvas = document.querySelector('#live');
                     if (!liveCanvas) return;
 
                     liveCanvas.width = _video.width;
@@ -90,7 +103,9 @@ app.directive('webcamDancing', function (Socket) {
                         }
 
                         ctxLive.putImageData(idata, 0, 0);
-                        socket.emit('dancingVideo', idata);
+                        // socket.emit('dancingVideo', idata);
+                        // var stream = ss.createStream();
+                        // ss(socket).emit('dancingVideo', idata);
                       
 
                       if (progress < 20000) {

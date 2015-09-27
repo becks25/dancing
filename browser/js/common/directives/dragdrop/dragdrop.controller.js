@@ -12,18 +12,13 @@ app.controller('DragAndDropCtrl', function ($scope, DraggedFactory) {
         e.stopPropagation();
         var product = e.dataTransfer.getData('text/html').split(">")[1];
         var draggedElem = angular.element(DraggedFactory.dragged);
-        console.log(e);
-        var left = e.pageX/2;
+        var left = e.pageX;
         var top = e.pageY/2;
 
-        console.log(angular.element(window).prop('outerHeight'));
-
-        console.log(draggedElem);
-        console.log('want', e.pageY);
         draggedElem.css('left', left + 'px');
         draggedElem.css('top', top + 'px');
+        draggedElem.css('position', 'absolute');
 
-       console.log(DraggedFactory.dragged);
 
         this.style.transform = 'scale(1.0)';
     };
