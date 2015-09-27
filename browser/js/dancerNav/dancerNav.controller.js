@@ -51,6 +51,19 @@ app.controller('dancerCtrl', function ($scope) {
     {
       danceName: 'Banana',
       dance: '/js/videos/Banana.gif'
+    },
+    {
+      danceName: 'Gene Belcher',
+      dance: '/js/videos/geneDancing.gif'
+    },
+    {
+      danceName: 'Deadpool',
+      dance: '/js/videos/deadpool.gif'
+    },
+    {
+      danceName: 'Left Shark',
+      dance: '/js/videos/leftshark.gif'
     }
   ];
+
 });

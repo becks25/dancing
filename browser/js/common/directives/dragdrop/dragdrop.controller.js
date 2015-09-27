@@ -1,11 +1,14 @@
 app.controller('DragAndDropCtrl', function ($scope, DraggedFactory) {
 
     $scope.handleDragStart = function (e) {
+        console.log($scope.resize);
+        e.stopPropagation();
         DraggedFactory.dragged=this;
         this.style.opacity = '0.4';
     };
     $scope.handleDragEnd = function (e) {
         this.style.opacity = '1.0';
+
     };
     $scope.handleDrop = function (e) {
         e.preventDefault();

@@ -97,7 +97,7 @@ app.directive('webcamDancing', function () {
                           var r = idata.data[i * 4 + 0];
                           var g = idata.data[i * 4 + 1];
                           var b = idata.data[i * 4 + 2];
-                          if ((g < background_data.data[i*4+0] +25 && g > background_data.data[i*4+0] -25) && (r < background_data.data[i*4+1] + 25 && r > background_data.data[i*4+1] - 25) && (b < background_data.data[i*4+2] + 25 && b > background_data.data[i*4+2] - 25)){
+                          if ((g < background_data.data[i*4+0] +30 && g > background_data.data[i*4+0] -30) && (r < background_data.data[i*4+1] + 30 && r > background_data.data[i*4+1] - 30) && (b < background_data.data[i*4+2] + 30 && b > background_data.data[i*4+2] - 30)){
                               idata.data[i * 4 + 3] = 0;
                             }
                         }

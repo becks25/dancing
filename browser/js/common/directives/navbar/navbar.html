@@ -1,9 +1,6 @@
-<nav class="navbar navbar-static-top">
+<nav class="navbar navbar-static-top ">
     <div class="container">
-        <div class="navbar-header">
-            <fullstack-logo></fullstack-logo>
-        </div>
-        
+
         <div class="col-sm-12 col-md-4">
 
             <select ng-model="dancesong" class="form-control">
@@ -23,6 +20,12 @@
               </div>
         </div>
 
+        <div class="col-sm-12 col-md-4" >
+              <button id="addon-button" type="button" class="btn btn-default btn-block" ng-click="awesomify()">
+                Make it awesome
+              </button>
+
+        </div>
         <audio ng-hide="true" ng-src="{{dancesong}}" autoplay controls></audio>
         
     </div>

@@ -2,10 +2,15 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
     return {
         restrict: 'E',
-        scope: {},
+        scope: {
+            awesome: "="
+        },
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
 
+            scope.awesomify = function(){
+                scope.awesome = true;
+            };
 
             scope.songs = [
                 {
@@ -131,9 +136,9 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
 
             setUser();
 
-            $rootScope.$on(AUTH_EVENTS.loginSuccess, setUser);
-            $rootScope.$on(AUTH_EVENTS.logoutSuccess, removeUser);
-            $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
+            // $rootScope.$on(AUTH_EVENTS.loginSuccess, setUser);
+            // $rootScope.$on(AUTH_EVENTS.logoutSuccess, removeUser);
+            // $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
 
         }
 

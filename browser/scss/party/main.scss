@@ -1,3 +1,17 @@
 .party{
 	width:100%;	
 }
+
+.resizing{
+	border:1px solid black;
+	cursor: nwse-resize;
+}
+
+.effects{
+	pointer-events: none;
+	position:absolute;
+}
+
+.disco{
+	left:45%;
+}
