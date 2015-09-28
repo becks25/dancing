@@ -71,6 +71,18 @@ app.controller('dancerCtrl', function ($scope) {
     {
       danceName: 'Spongebob',
       dance: '/js/videos/spongebob.gif'
+    },
+    {
+      danceName: 'Brian Griffin',
+      dance: '/js/videos/BrianBanana.gif'
+    },
+    {
+      danceName: 'MC Hammer',
+      dance: '/js/videos/MCHammer.gif'
+    },
+    {
+      danceName: 'Peanuts',
+      dance: '/js/videos/orangepeanut.gif'
     }
   ];
 

@@ -15,4 +15,13 @@ navbar {
     }
   }
 
+  .fixed-height-menu{
+    height: 400px;
+    overflow:scroll;
+
+    .dancer{
+      height:10vh;
+    }
+  }
+
 }
