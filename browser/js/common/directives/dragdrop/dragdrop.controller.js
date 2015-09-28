@@ -1,6 +1,9 @@
 app.controller('DragAndDropCtrl', function ($scope, DraggedFactory) {
 
     $scope.handleDragStart = function (e) {
+        // if($scope.resize){
+        //     return;
+        // }
         console.log($scope.resize);
         e.stopPropagation();
         DraggedFactory.dragged=this;
