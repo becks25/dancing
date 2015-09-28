@@ -4,7 +4,7 @@
 	 on-streaming="onSuccess()"
 	 on-error="onError(err)"
 ng-hide="!!backgroundIdata"></webcam>
-<button type="button"  class="btn btn-default btn-block" ng-click="makeSnapshot()">Take Picture of Background</button>
+<button type="button"  class="btn btn-default btn-block pic-button" ng-click="makeSnapshot()" ng-hide="!!backgroundIdata">Take Picture of Background</button>
 
 
   <canvas id="snapshot" width="160" height="96" ng-hide="true"></canvas>

@@ -63,6 +63,14 @@ app.controller('dancerCtrl', function ($scope) {
     {
       danceName: 'Left Shark',
       dance: '/js/videos/leftshark.gif'
+    },
+    {
+      danceName: 'Lisa Simpson',
+      dance: '/js/videos/lisasimpson.gif'
+    },
+    {
+      danceName: 'Spongebob',
+      dance: '/js/videos/spongebob.gif'
     }
   ];
 

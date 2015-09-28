@@ -1,8 +1,11 @@
 
 .webcam{
 	video{
-		border: 3px solid black;
+		border: 3px solid #f29e8d;
+		border-radius:5px;
+		background: #e5f4f8;
 	}
+
 
 }
 
@@ -10,6 +13,13 @@
 	position:absolute;
 	left:40%;
 	margin-top:10%;
+
+	.pic-button{
+		color: #f29e8d;
+		font-weight: bold;
+	}
+
+
 }
 
 .moveForward{

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-static-top ">
     <div class="container">
 
-        <div class="col-sm-12 col-md-4">
+        <div class="col-sm-12 col-md-4 nav_button">
 
             <select ng-model="dancesong" class="form-control">
                 <option value="" disabled selected>Select a Song</option>
@@ -10,7 +10,7 @@
 
         </div>
 
-         <div class="col-sm-12 col-md-4" dropdown is-open="status.isopen">
+         <div class="col-sm-12 col-md-4 nav_button" dropdown is-open="status.isopen">
               <button id="single-button" type="button" class="btn btn-default btn-block" dropdown-toggle ng-disabled="disabled">
                 Add Dancers <span class="caret"></span>
               </button>
@@ -20,7 +20,7 @@
               </div>
         </div>
 
-        <div class="col-sm-12 col-md-4" >
+        <div class="col-sm-12 col-md-4 nav_button" >
               <button id="addon-button" type="button" class="btn btn-default btn-block" ng-click="awesomify()">
                 Make it awesome
               </button>

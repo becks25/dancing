@@ -1,4 +1,5 @@
 * {
+  font-family: 'Lato', sans-serif;
   box-sizing: border-box;
 }
 
@@ -34,12 +35,7 @@ body {
   background:none;
 }
 
-navbar{
-  
-  background:none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
+
 
 @import 'directives/main';
 @import 'home/main';
