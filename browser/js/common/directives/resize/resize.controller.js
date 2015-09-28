@@ -12,9 +12,16 @@ app.controller('ResizeCtrl', function ($scope) {
      var startY;
 
      $scope.toggleResizing = function(){
-        console.log(this);
-        angular.element(this).toggleClass('resizing');
+
         $scope.resize = !$scope.resize;
+
+        if($scope.resize){
+            angular.element(this).addClass('resizing');
+
+        }else{
+             angular.element(this).removeClass('resizing');
+         
+        }
       }
 
       $scope.dragStart = function(e){

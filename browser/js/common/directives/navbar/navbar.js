@@ -8,8 +8,10 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state) 
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
 
+            scope.awesome = false;
+            
             scope.awesomify = function(){
-                scope.awesome = true;
+                scope.awesome = !scope.awesome;
             };
 
             scope.songs = [
