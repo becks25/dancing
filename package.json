@@ -1,14 +1,15 @@
 {
-  "name": "FullstackGeneratedApp",
+  "name": "Danceparty",
   "version": "1.0.0",
-  "description": "A generated project at Fullstack Academy",
+  "description": "A dance party",
   "main": "server/start.js",
   "scripts": {
-    "start": "nodemon --watch server -e js,html server/start.js",
+    "start": "nodemon server/start.js",
     "postinstall": "gulp build"
   },
   "dependencies": {
     "angular": "^1.4.0",
+    "node": "0.12.7",
     "angular-bootstrap": "^0.12.0",
     "angular-mocks": "^1.4.0",
     "angular-ui-router": "^0.2.15",
